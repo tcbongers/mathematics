@@ -1,0 +1,2 @@
+Continued Fractions:
+  - Library to do arithmetic with continued fractions; mostly geared towards computing the periodic continued fraction representation of sqrt(N) and solving Pell equations.
