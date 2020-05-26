@@ -83,13 +83,28 @@ class ContinuedFraction:
 		return '[' + str(self.array[0]) + ';' + ', '.join([str(_) for _ in self.array[1:]]) + ']'
 		
 	def reduce(self):
-		# Reduce to a single rational number and return it
+		""" 
+		Reduce to a single rational number by computing the complex fraction.
+		"""
 		array = self.array
 		reduced = Fraction(array[-1], 1)
 		for r in array[-2::-1]:
 			reduced = Fraction(1, 1) / reduced + Fraction(r, 1)
 			
 		return reduced
+		
+	def convergent(self, n):
+		""" 
+		Generate the nth convergent to the continued fraction. Assume
+		that the cf is periodic, or that there is enough information. The zeroth
+		convergent is just the reduction of the continued fraction.
+		"""
+		if self.period == 0 and n > len(self.array):
+			print('Not enough information.')
+			return -1
+			
+		cf = ContinuedFraction(self.array, self.period, n)
+		return cf.reduce()
 		
 def generateContinuedFraction(N, target_length = 0):
 	"""
