@@ -1,0 +1,1 @@
+print(str(sum([pow(n, n, 10**12) for n in range(1, 1001)]))[-10:])
